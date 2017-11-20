@@ -1,0 +1,20 @@
+Microbenchmarking experiments for the P100
+
+# compile
+nvcc -o <executable> <sources...>
+
+# executing
+./<executable>
+
+# profiling
+nvprof <executable>
+options:
+* --print-gpu-trace       | breaks down run time, register / memory usage, allocations
+* --events warps_launched | shows num of warps scheduled
+* --output-profile <file> | dumps profile data to use / visualize elsewhere
+
+# dumping object
+cuobjdump <executable>
+options:
+* -reg-usage | show allocated resources (registers, memory, etc)
+* -sass -ptx | disassembles into PTX
